@@ -15,7 +15,7 @@ function f1(){
 	//window.open("content.jsp");
 	opener.location.reload(true);
 	//window.open("top.jsp","top");
-	window.open("admin.jsp","left");
+	window.open("teacher.jsp","left");
 	   self.close();
 }
 </script>

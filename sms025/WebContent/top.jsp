@@ -45,7 +45,7 @@ function loginwindow(login1){
 				<ul>
 					<li><a onclick="loginwindow('<%=login1%>')" class="nav_home navigationpref" target="left"><br />ADMIN
 					</a></li>
-					<li><a href="teacher.jsp" class="nav_about navigationpref" target="left"><br />TEACHER
+					<li><a onclick="loginwindow('<%=login1%>')" class="nav_about navigationpref" target="left"><br />TEACHER
 					</a></li>
 					<li><a href="student.jsp" class="nav_workshops navigationpref" target="left"><br />STUDENT
 					</a></li>
