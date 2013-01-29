@@ -66,7 +66,7 @@ public class AddDetailsDAO {
 			String d=io.next();
 			System.out.println(d);
 			add+="'"+d+"',";
-		
+		}
 		try {
 			add=add.substring(0,add.length()-1)+")";
 			System.out.println(add);
@@ -79,7 +79,7 @@ public class AddDetailsDAO {
 			addtest=false;
 		}
 	
-		}
+		
 		return addtest;
 	}
 	
