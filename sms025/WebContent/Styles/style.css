@@ -1,0 +1,291 @@
+/*********************************************************/
+/***  Free Web Templates by Investintech PDF Solutions  **/
+/***        URL: http://www.investintech.com           ***/
+/*********************************************************/
+
+/* General Style */
+
+body { 	
+	background-image:url(../images/backfader.jpg);
+	background-repeat:repeat-x;	
+	background-color:#285b00;
+	margin:0 auto;
+	font-family:"Comic Sans MS", cursive;
+	font-size:14px;
+	color:white;
+	text-align:center;
+}
+h1 {
+	text-shadow:0.05em 0.05em black;
+	font-weight:bold;
+	font-size:23px;
+	margin-top: 0px;
+	margin-bottom:10px;
+}
+a {
+	color:white;
+	font-weight:bold;
+	text-decoration:none;
+}
+a:hover {
+	color:#ffd800;
+	text-decoration:underline;
+}
+p { font-size:14px;
+	text-align:justify;
+}
+
+a.button {
+	text-shadow:0.05em 0.05em black;
+	background-image:url("../images/button-big.jpg");
+	display:block;
+	line-height:38px;
+	text-align:center;
+	width:157px;
+	height:43px;
+	font-size:14px
+}
+a:hover.button {
+	background-image:url("../images/button-big_hover.jpg");
+	display:block;
+}
+a.button-small {
+	text-shadow:0.05em 0.05em black;
+	background-image:url("../images/button-small.jpg");
+	display:block;
+	line-height:25px;
+	text-align:center;
+	width:110px;
+	height:30px;
+	font-size:12px
+}
+a:hover.button-small {
+	background-image:url("../images/button-small_hover.jpg");
+	display:block;
+}
+.rightalign {
+	float:right;
+}
+
+/* Wrapper Style */
+
+#page {
+	margin:0 auto;
+	position:relative;
+	width:1000px;
+	text-align:left;
+}
+#page div#header {
+	height:168px;
+}
+#header div#logo {
+	float:left;
+	height:160px;
+	padding-top:10px;
+	position:relative;
+	text-align:center;
+	width:160px;
+}
+#logo a {
+	color:#ff6600;
+	text-decoration:none;
+	font-weight:bold;
+}
+
+#logo a:hover {
+	text-decoration:underline;
+}
+.orangeaddress {
+	color:#ff6600;
+}
+
+#header div#navigation {
+	text-shadow:0.075em 0.075em black;
+	float:right;
+	height:160px;
+	padding-right:100px;
+	width:600px;
+}
+
+a.navigationpref {
+	display:block;
+	padding-top:70px;
+	text-align:center;
+	background-repeat:no-repeat;
+	width:110px;
+	font-size:20px;
+}
+
+a.nav_home{
+	background-image:url("../images/nav_home.png");
+}
+
+a:hover.nav_home, a.active.nav_home{
+	background-image:url("../images/nav_home_hover.png");
+}
+
+a.nav_about{
+	background-image:url("../images/nav_about.png");
+}
+
+a:hover.nav_about, a.active.nav_about{
+	background-image:url("../images/nav_about_hover.png");
+}
+
+a.nav_workshops{
+	background-image:url("../images/nav_workshops.png");
+}
+
+a:hover.nav_workshops, a.active.nav_workshops{
+	background-image:url("../images/nav_workshops_hover.png");
+}
+
+a.nav_sports{
+	background-image:url("../images/nav_sports.png");
+}
+
+a:hover.nav_sports, a.active.nav_sports{
+	background-image:url("../images/nav_sports_hover.png");
+}
+
+a.nav_contact{
+	background-image:url("../images/nav_contact.png");
+}
+
+a:hover.nav_contact, a.active.nav_contact{
+	background-image:url("../images/nav_contact_hover.png");
+}
+
+.readmore {
+	font-size:14px;
+	text-align:right;
+}
+#header div#navigation ul {
+	margin:20px 0 0 0;
+	padding:0;
+	float:right;
+	list-style:none;
+}
+#header div#navigation li , #footer div#navigation2 li {
+	text-shadow:0.05em 0.05em black;
+	margin:0;
+	padding:0;
+	margin-left:5px;
+	float:left;
+	list-style:none;
+}
+
+/* Content Style */
+
+#page div#middle {
+	height:379px;
+	padding:10px;
+}
+#middle div#captionleft {
+	background-image:url("../images/nav_about.png");
+	background-position:-10px 0;
+	background-repeat:no-repeat;
+	float:left;
+	height:325px;
+	padding:10px 0 10px 90px;
+	width:220px;
+}
+#middle div#board {
+	background-image:url("../images/board.png");
+	background-repeat:no-repeat;
+	float:right;
+	height:318px;
+	padding:20px 94px 30px 30px;
+	width:530px;
+	margin-top:15px;
+}
+#board a {
+	color:#ffd800;
+}
+#board p{
+	font-size:20px;
+}
+#board  h1{
+	font-size:35px;
+}
+#page div#middle2 {
+	height:269px;
+	padding:20px 80px 20px 10px;
+}
+#middle2 .captions {
+	background-position:-10px 0;
+	background-repeat:no-repeat;
+	height:130px;
+	padding:5px 5px 5px 90px;
+	width:290px;
+	float:left;
+}
+.captions h1{
+	margin-top:-5px;
+	margin-bottom:-5px
+}
+#middle2 div#caption2{
+	background-image:url("../images/nav_workshops.png");
+}
+#middle2 div#caption3 {
+	background-image:url("../images/nav_sports.png");
+}
+#middle2 div#contactbox{
+	background-image:url("../images/contact-box.png");
+	background-repeat:no-repeat;
+	float:right;
+	height:204px;
+	padding:15px 25px 15px 130px;
+	width:351px;
+}
+#contactbox h2{
+color:#003399;
+font-family:Georgia, "Times New Roman", Times, serif;
+font-size:30px
+}
+
+/* Footer Style */
+
+#page div#footer {
+	height:146px;
+	padding:20px 80px 20px 10px;
+}
+#footer ul{
+	margin:0;
+	padding:0;
+	font-size:18px;
+	list-style:none;
+	float:left;
+}
+#footer li{
+	margin:0 5px 0 5px;
+	padding:0;	
+	list-style:none;
+	float:left;
+}
+#footer div#copyright {
+	float:right;
+	height:80px;
+	margin: 20px 0 0 20px;
+	width:170px;
+	font-size:12px;
+	color:#ff6600;
+}
+#copyright a{
+	color:#ff6600;
+}
+#copyright a:hover{
+	color:#ff6600;
+}
+#subcodeerror,#subnameerror,#maxmarkserror,#passmarkserror {
+	font-style: normal;
+	color: red;
+	font-family: arial;
+	font-size: 20px;
+}
+#footer div#generalia {
+	float:right;
+	height:80px;
+	margin:20px 10px 0 0;
+	width:200px;
+}
