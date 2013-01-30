@@ -1,8 +1,6 @@
 package com.sms.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -33,10 +31,12 @@ public class LoginAdminController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {}
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		// TODO Auto-generated method stub
 
 		// TODO Auto-generated method stub
@@ -49,19 +49,26 @@ public class LoginAdminController extends HttpServlet {
 		AuthenticationVO vo=new AuthenticationVO();
 		AuthenticatinBO bo=new AuthenticatinBO();
 		
-		
+		System.out.println(request.getParameter("usertype")+"user type");
 		vo.setUsername(username);
 		vo.setPassword(password);
-		
+		vo.setUsertype(request.getParameter("usertype"));
+		System.out.println("coming to controller"+vo.getUsername());
 		//The condition to be changed later
-		if(username!="admin"){
+		if(vo.getUsertype().equalsIgnoreCase("teacher")){
 			try {
 				authentication=bo.authenticateUser(vo);
+				System.out.println(authentication+"is it true");
 				if(authentication==true){
-					session.setAttribute("login",vo.getUsername());
-					System.out.println(authentication+"authentication status");
-					RequestDispatcher dispatcher = request.getRequestDispatcher("loginteacher.jsp");
-					dispatcher.forward(request, response);
+					session.setAttribute("login",vo.getUsertype());
+					session.setAttribute("username", vo.getUsername());
+					System.out.println("authentication status");
+					RequestDispatcher dispatcher1 = request.getRequestDispatcher("loginteacher.jsp");
+					dispatcher1.forward(request, response);
+				}
+				else{
+					RequestDispatcher dispatcher1 = request.getRequestDispatcher("invalidlogin.jsp");
+					dispatcher1.forward(request, response);
 				}
 			} catch (SmsException e) {
 				// TODO Auto-generated catch block
@@ -71,21 +78,22 @@ public class LoginAdminController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		else{
+		else if(vo.getUsertype().equalsIgnoreCase("admin")){
 		
-		PrintWriter out=response.getWriter();
+		
 		if(username.equalsIgnoreCase("admin") && password.equalsIgnoreCase("admin")){
-			System.out.println("controller");
+			System.out.println("controller in admin"+vo.getUsername());
+			session.setAttribute("login", vo.getUsername());
 			RequestDispatcher dispatcher = request.getRequestDispatcher("loginadmin.jsp");
 			dispatcher.forward(request, response);
 		}
 		else {
-			out.print("in else part");
+			RequestDispatcher dispatcher1 = request.getRequestDispatcher("invalidlogin.jsp");
+			dispatcher1.forward(request, response);
 		}
 		System.out.println("out controller");
 
+		// TODO Auto-generated method stub
 	}
-	
 	}
-
 }

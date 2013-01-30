@@ -24,13 +24,20 @@ function f1(){
 //session.setAttribute("login", "admin");
 
 String login1 = (String) session.getAttribute("login");
-if(login1!=null){
+if(login1!=null){%>
+
+<%}else{
+	  login1=" ";
+}
+session.setAttribute("login", login1);
+if(login1.equalsIgnoreCase("admin")){
 	if(login1.equalsIgnoreCase("admin")){%>
 <script>
 	f1();
 </script>
 <%}}%>
-<form action="LoginAdminController" method="get">
+<form action="LoginAdminController" method="post">
+<input type="hidden" name="usertype" id="usertype" value="admin">
 <table>
 		<tr>
 			<td>Username</td>

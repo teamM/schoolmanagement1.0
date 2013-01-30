@@ -12,16 +12,26 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 <script type="text/javascript">
-function loginwindow(login1){
-  if(login1!=" "){
-	   window.open("admin.jsp","left");
-	alert("A session is already open log out first");
-   }else{
-	   w = window.open('loginadmin.jsp','','width=200,height=200');
-		w.focus();
-   }
+function adminloginwindow(login1){
+	if(login1=="admin"){
+		   //window.open("admin.jsp","left");
+		alert("A session is already open log out first");
+	   }else{
+		   w = window.open('loginadmin.jsp','','width=200,height=200');
+			w.focus();
+	   }
 
-}
+	}
+	function teacherloginwindow(login1){
+		if(login1=="teacher"){
+			  // window.open("teacher.jsp","left");
+			alert("A session is already open log out first");
+		   }else{
+			   w = window.open('loginteacher.jsp','','width=200,height=200');
+				w.focus();
+		   }
+
+		}
 </script>
 
 </head>
@@ -41,11 +51,12 @@ function loginwindow(login1){
 			  <%}else{
 				  login1=" ";
 			  }
-			  System.out.println(login1+(String)session.getAttribute("login")+"in top");%>
+			  session.setAttribute("login", login1);
+			  %>
 				<ul>
-					<li><a onclick="loginwindow('<%=login1%>')" class="nav_home navigationpref" target="left"><br />ADMIN
+					<li><a onclick="adminloginwindow('<%=login1%>')" class="nav_home navigationpref" target="left"><br />ADMIN
 					</a></li>
-					<li><a onclick="loginwindow('<%=login1%>')" class="nav_about navigationpref" target="left"><br />TEACHER
+					<li><a onclick="teacherloginwindow('<%=login1%>')" class="nav_about navigationpref" target="left"><br />TEACHER
 					</a></li>
 					<li><a href="student.jsp" class="nav_workshops navigationpref" target="left"><br />STUDENT
 					</a></li>
