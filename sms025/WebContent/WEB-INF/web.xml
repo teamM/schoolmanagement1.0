@@ -79,4 +79,14 @@
     <servlet-name>AddTestController</servlet-name>
     <url-pattern>/AddTestController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddMarksController</display-name>
+    <servlet-name>AddMarksController</servlet-name>
+    <servlet-class>com.sms.controller.AddMarksController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddMarksController</servlet-name>
+    <url-pattern>/AddMarksController</url-pattern>
+  </servlet-mapping>
 </web-app>

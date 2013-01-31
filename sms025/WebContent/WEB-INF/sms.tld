@@ -79,4 +79,16 @@
    </attribute>
  </tag>
  
+ <tag>
+ <name>RetriveDetails</name>
+ <tag-class>com.sms.customtags.RetreiveAssignedSubjects</tag-class>
+ <body-content>empty</body-content>
+ </tag>
+ 
+ <tag>
+ <name>TestDetails</name>
+ <tag-class>com.sms.customtags.TestDetailsComboTag</tag-class>
+ <body-content>empty</body-content>
+ </tag>
+ 
 </taglib>
