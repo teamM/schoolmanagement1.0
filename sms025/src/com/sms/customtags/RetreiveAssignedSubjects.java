@@ -22,11 +22,12 @@ public class RetreiveAssignedSubjects extends SimpleTagSupport{
 		PageContext pageContext = (PageContext)getJspContext();
 		HttpSession session = pageContext.getSession();
 		
+		
 		RetreiveDetailsDAO dao = null;
 		List<SubjectVO> subject_list = null;
 		try {
 			dao = new RetreiveDetailsDAO();
-			subject_list = dao.retreiveAssignedSubjects();
+			subject_list = dao.retreiveAssignedSubjects((String) session.getAttribute("username"));
 		} catch (SmsException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -52,7 +53,7 @@ public class RetreiveAssignedSubjects extends SimpleTagSupport{
 			while(io.hasNext()){
 				vo = io.next();				
 				out.print("<tr>");
-				out.print("<td><input type='radio' name='subject_details' value='"+vo.getSubjectcode()+"' onclick='fun(1)'/></td>");
+				out.print("<td><input type='radio' id='subject_details' name='subject_details' value='"+vo.getSubjectcode()+"' onclick='fun(1)'/></td>");
 				out.print("<td>" + vo.getStd() + "</td>");
 				out.print("<td>" + vo.getSubjectcode() + "</td>");
 				out.print("<td>" + vo.getSubjectname() + "</td>");

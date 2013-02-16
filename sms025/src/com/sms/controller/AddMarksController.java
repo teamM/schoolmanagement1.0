@@ -41,9 +41,10 @@ public class AddMarksController extends HttpServlet {
 		session1.setAttribute("subject_code", subject_code);
 		if(val.equalsIgnoreCase("1")){
 			try {
-				String std = bo.retreiveStandard(subject_code);				
+				String std = bo.retreiveStandard(subject_code);
 				test_list = bo.retreiveTestDetails(std);				
 				session1.setAttribute("test_list", test_list);
+				System.out.println(test_list.isEmpty()+" check it");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("addmarks.jsp");
 				dispatcher.forward(request, response);
 			} catch (SmsBusinessException e) {

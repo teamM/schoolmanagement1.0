@@ -14,8 +14,11 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 function fun(num) {
+	
 	document.getElementById("val").value=num;
+	
 	document.addmarksform.submit();
+	alert(num);
 }
 
 function sessfun(){
@@ -28,9 +31,9 @@ function sessfun(){
 	<h1 onclick="sessfun()">invalidate the session</h1>
 		<div id="middle">
 		<form name="addmarksform" action="AddMarksController">
-			<input type="hidden" name="val" value="1">
+			<input type="hidden" name="val" id="val" value="1">
 			<p:RetriveDetails/>
-			<p:TestDetails/>
+	
 			<%if(!(session.isNew())){%>
 				<% List<String> student_list = (List<String>) session.getAttribute("student_list");
 				if(student_list!=null){

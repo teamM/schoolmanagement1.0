@@ -18,6 +18,8 @@
 <tr><td> </td></tr>
 <tr><td align="center" bgcolor="#466087"><a href="addtest.jsp" target="right">Add Test</a></td></tr>
 <tr><td> </td></tr>
+<tr><td align="center" bgcolor="#466087"><a href="addmarks.jsp" target="right">Add Marks</a></td></tr>
+<tr><td> </td></tr>
 <tr><td align="center" bgcolor="#466087"><a href="accountdetails.jsp" target="right">Add Account</a></td></tr>
 <tr><td> </td></tr>
 <tr><td align="center" bgcolor="#466087"><a href="logout.jsp" target="right">Logout</a></td></tr>
