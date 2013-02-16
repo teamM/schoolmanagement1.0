@@ -5,7 +5,7 @@
 <head>
 <link rel="stylesheet" type="text/css" href="Styles/style1.css">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>School Management System</title>
 </head>
 <frameset rows="26%,*,15%" border="0.5">
   <frame name="top" src="top.jsp">
@@ -15,5 +15,4 @@
   </frameset>
   <frame src="bottom.jsp">
 </frameset>
-
 </html>

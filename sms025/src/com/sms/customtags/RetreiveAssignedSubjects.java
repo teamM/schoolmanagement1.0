@@ -22,6 +22,7 @@ public class RetreiveAssignedSubjects extends SimpleTagSupport{
 		PageContext pageContext = (PageContext)getJspContext();
 		HttpSession session = pageContext.getSession();
 		
+		System.out.println("custom tag");
 		RetreiveDetailsDAO dao = null;
 		List<SubjectVO> subject_list = null;
 		try {

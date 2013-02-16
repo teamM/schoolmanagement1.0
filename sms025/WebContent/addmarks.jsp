@@ -14,11 +14,13 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 function fun(num) {
+	alert(num);
 	document.getElementById("val").value=num;
-	document.addmarksform.submit();
+	document.myform.submit();
 }
 
 function sessfun(){
+	document.write("logged out ");
 	session.invalidate();
 }
 </script>
@@ -27,21 +29,28 @@ function sessfun(){
 	<div id="page">
 	<h1 onclick="sessfun()">invalidate the session</h1>
 		<div id="middle">
-		<form name="addmarksform" action="AddMarksController">
-			<input type="hidden" name="val" value="1">
-			<p:RetriveDetails/>
+		<form name="myform" action="AddMarksController">
+			<input type="hidden" name="val" id="val" value="1">
+			<p:RetriveDetails/>			
 			<p:TestDetails/>
-			<%if(!(session.isNew())){%>
-				<% List<String> student_list = (List<String>) session.getAttribute("student_list");
+			<%System.out.println("session = " + session.isNew());
+			 if(!(session.isNew())){%>
+				<%				
+				List<String> student_list = (List<String>) session.getAttribute("student_list");
 				if(student_list!=null){
 				   Iterator<String> io_student = student_list.iterator();
 						%>
 						<table>
-						<%while(io_student.hasNext()){%>
-							<tr><td><%=io_student.next() %></td></tr>				
+						<%while(io_student.hasNext()){
+							String student_name = io_student.next();
+									%>
+							<tr><td><%=student_name %></td>
+							<td><input type="text" name="<%=student_name %>" id="<%=student_name %>"></td></tr>				
 						<% } %>
 						</table>
-				<% } } %>
+				<% } } %>	
+			
+			
 		</form>	
 	</div>
 	</div>

@@ -33,10 +33,12 @@ public class AddMarksController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println("sssssssssssssssssss");
 		String subject_code = request.getParameter("subject_details");
 		RetreiveDetailsBO bo = new RetreiveDetailsBO();
 		List<String> student_list,test_list;
 		String val = request.getParameter("val");
+		System.out.println("value = " + val);
 		HttpSession session1 = request.getSession();
 		session1.setAttribute("subject_code", subject_code);
 		if(val.equalsIgnoreCase("1")){
@@ -56,7 +58,7 @@ public class AddMarksController extends HttpServlet {
 		}
 		else if(val.equalsIgnoreCase("2")){
 			try {
-				System.out.println(session1.getAttribute("subject_code"));
+				System.out.println("subject code = " + session1.getAttribute("subject_code"));
 				String std = bo.retreiveStandard("DS01");
 				student_list = bo.retreiveStudentNames(std);
 				session1.setAttribute("student_list", student_list);
