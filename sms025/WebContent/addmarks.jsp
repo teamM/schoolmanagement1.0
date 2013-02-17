@@ -34,7 +34,7 @@ function sessfun(){
 			<p:RetriveDetails/>			
 			<p:TestDetails/>
 			<%System.out.println("session = " + session.isNew());
-			 if(!(session.isNew())){%>
+			 if(session.getAttribute("stud")!=null){%>
 				<%				
 				List<String> student_list = (List<String>) session.getAttribute("student_list");
 				if(student_list!=null){
@@ -49,7 +49,6 @@ function sessfun(){
 						<% } %>
 						</table>
 				<% } } %>	
-			
 			
 		</form>	
 	</div>

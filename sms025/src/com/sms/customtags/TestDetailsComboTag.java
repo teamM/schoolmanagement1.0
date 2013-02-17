@@ -15,7 +15,7 @@ public class TestDetailsComboTag extends SimpleTagSupport{
 
 		PageContext pageContext = (PageContext)getJspContext();
 		HttpSession session = pageContext.getSession();		
-		if(!(session.isNew())){
+		if(session.getAttribute("testcombo")!=null){
 			@SuppressWarnings("unchecked")
 		List<String> test_list = (List<String>) session.getAttribute("test_list");
 		System.out.println(test_list);

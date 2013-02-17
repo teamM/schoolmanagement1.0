@@ -75,6 +75,7 @@ public class SmsAdminDao implements Dao{
 		con.close();
 		}catch (SQLException e) {
 			// TODO Auto-generated catch block
+			System.out.println(e+"error is here");
 			throw new SmsBusinessException("Subject information could not be inserted");
 		}	
 	}

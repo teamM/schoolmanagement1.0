@@ -11,7 +11,6 @@ import java.util.List;
 import com.sms.exceptions.SmsBusinessException;
 import com.sms.exceptions.SmsException;
 import com.sms.vo.SubjectVO;
-import com.sms.vo.AddColumnVO;
 import com.sms.vo.TeacherDetailsVO;
 
 public class AssignTeacherDAO {
@@ -79,14 +78,16 @@ public class AssignTeacherDAO {
 		String[] subject_codes = tvo.getSubject_code();
 		try {
 				for(int i=0;i<subject_codes.length;i++){
-				statement = con.prepareStatement("insert into assignteacher values(?,?)");
+				statement = con.prepareStatement("insert into assignteacher values(?,?,?)");
 				statement.setString(1, subject_codes[i]);
 				statement.setString(2, tid);
+				statement.setString(3, "2");
 				statement.executeUpdate();
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			System.out.println(e+"error is here");
 			throw new SmsBusinessException("Teacher could not be assigned to the subjects");
 			
 		}

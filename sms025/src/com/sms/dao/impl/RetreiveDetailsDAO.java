@@ -29,10 +29,11 @@ public class RetreiveDetailsDAO {
 		}
 	}
 	
-	public List<SubjectVO> retreiveAssignedSubjects() throws SmsBusinessException{
+	public List<SubjectVO> retreiveAssignedSubjects(String tid) throws SmsBusinessException{
 		List<SubjectVO> subject_list = new ArrayList<SubjectVO>();
 		try {
-			statement = con.prepareStatement("select * from subject where subject_code in(select code from assignteacher where tid='Th05')");
+			statement = con.prepareStatement("select * from subject where subject_code in(select code from assignteacher where tid=?)");
+			statement.setString(1,tid);
 			result = statement.executeQuery();
 			SubjectVO vo;
 			while(result.next()){
@@ -93,6 +94,7 @@ public class RetreiveDetailsDAO {
 			statement.setString(1, std);
 			result = statement.executeQuery();
 			while(result.next()){
+				System.out.println(result.getString(1)+" so here ");
 				test_list.add(result.getString(1));
 			}
 		} catch (SQLException e) {
