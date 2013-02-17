@@ -1,0 +1,64 @@
+mysql> desc assignteacher;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| subject_code | varchar(10) | YES  | MUL | NULL    |       |
+| tid          | varchar(15) | YES  | MUL | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+
+mysql> desc extracurricular;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| code     | varchar(15) | NO   | PRI | NULL    |       |
+| name     | varchar(35) | YES  |     | NULL    |       |
+| standard | int(2)      | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+
+mysql> desc subject;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| subject_code  | varchar(10) | NO   | PRI | NULL    |       |
+| subject_name  | varchar(15) | YES  |     | NULL    |       |
+| maximum_marks | int(3)      | YES  |     | NULL    |       |
+| pass_marks    | int(3)      | YES  |     | NULL    |       |
+| standard      | varchar(10) | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+
+mysql> desc studentdetails;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| sid          | varchar(30) | NO   | PRI | NULL    |       |
+
+mysql> desc teacherdetails;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| tid          | varchar(15) | NO   | PRI | NULL    |       |
+
+
+=>> For student details and teacher details the rest of the columns can be added directly from the UI.
+
+create table assignteacher(code varchar(10),tid varchar(5),foreign key(code) references subject(subject_code),foreign key(tid) references teacherdetails(tid));
+
+create table M1_table(test_id varchar(10),student_name varchar(30),marks_secured int(3),foreign key(test_id) references testdetails(test_id));
+
+create table testdetails(
+test_id varchar(10),
+test_name varchar(20),
+standard varchar(7),
+max_marks int(5),
+min_marks int(5),
+primary key (test_id,standard)
+);
+
+
+mysql> select subject_code,subject_name from subject where standard=1 and subject_code not in(select code from assignteacher);
+
+mysql> select * from subject where standard='1' and subject_code not in(select code from assignteacher);
+
+mysql> select a.* from subject a,assignteacher b where a.subject_code=b.code and b.tid='Th05';
+
+mysql> select * from subject where subject_code in(select code from assignteacher where tid='Th05');
