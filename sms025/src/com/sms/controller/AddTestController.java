@@ -36,22 +36,18 @@ public class AddTestController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("cont");
+		System.out.println("controleer");
 		String val = (String) request.getParameter("val");
 		HttpSession session=request.getSession();
+		AddTestBO bo=new AddTestBO();
 		if(!(request.getParameter("std").equals(""))){
 		session.setAttribute("std", Integer.parseInt(request.getParameter("std")));
 		if(val.equalsIgnoreCase("1")){
-			SubjectVO vo=new SubjectVO();
-			List<SubjectVO> subject_list;
-			vo.setStd(request.getParameter("std"));
-			//subject_list=bo.retreiveSubjectInfo(vo);
-			SmsDelegate delegate = new SmsDelegate();
+			
 			try{
-	    	   subject_list = delegate.retreiveSubjectDelegate(vo);
-			System.out.println(subject_list.isEmpty()+"that no data in table");
-				session.setAttribute("sub_list",subject_list);
-		}
+	    		List<AddTestVO> test_list = bo.retreiveTestDetails(request.getParameter("std").toString());
+				session.setAttribute("test_list", test_list);				
+			}
 			catch (SmsBusinessException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -67,14 +63,13 @@ public class AddTestController extends HttpServlet {
 				} 
 		}
 		else{
-			AddTestVO vo=new AddTestVO();
-			AddTestBO bo=new AddTestBO();
+			AddTestVO vo=new AddTestVO();			
 			vo.setTestid(request.getParameter("testid"));
 			vo.setTestname(request.getParameter("testname"));
 			vo.setPassmarks(Integer.parseInt(request.getParameter("passm")));
 			vo.setMaxmarks(Integer.parseInt(request.getParameter("maxm")));
 			vo.setStd(request.getParameter("std"));
-			vo.setSubject_code(request.getParameter("r_subject"));
+			
 			try {
 				bo.addtest(vo);
 				request.setAttribute("message","Test Added Sucessfully");

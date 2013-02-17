@@ -60,9 +60,10 @@ function fun(num) {
 					<input type="hidden" name="val" id="val" value="9">
 					<% System.out.print("session = " + session.isNew());%>
 					<% if (!(session.isNew()) && std!=null){
-						System.out.print("session 1");
-						List<SubjectVO> subject_list = (List<SubjectVO>) session.getAttribute("sub_list");
-						Iterator<SubjectVO> io = subject_list.iterator();
+						System.out.println("session 1");
+						List<AddTestVO> test_list = (List<AddTestVO>) session.getAttribute("test_list");
+						Iterator<AddTestVO> io = test_list.iterator();
+						AddTestVO vo_list = new AddTestVO();						
 						SubjectVO rvo = new SubjectVO();
 						rvo = (SubjectVO) session.getAttribute("rvo");
 						String code = "", name = "", max = "", pass = "";
@@ -74,23 +75,27 @@ function fun(num) {
 							max = String.valueOf(rvo.getMax_mark());
 							pass = String.valueOf(rvo.getPass_mark());
 						}
-					//Displaying the Subject details
+					//Displaying the Test details
 								if (io.hasNext()) {
 									%>
-									<table cellpadding="5px">
-									<caption>Select The Subject And Give Test Details</caption>
+									<table cellpadding="5px" border="1">
+									<caption><u>TEST DETAILS</u></caption><br>
 									<tr>
-									<td></td>
-									<td>SUBJECT CODE</td>
-									<td>SUBJECT NAME</td>
+									<td>TEST ID</td>
+									<td>TEST NAME</td>
+									<td>STANDARD</td>
+									<td>MAXIMUM MARKS</td>
+									<td>PASS MARKS</td>
 									<%
 									while (io.hasNext()) {
-										SubjectVO vo = (SubjectVO) io.next();
+										AddTestVO vo = (AddTestVO) io.next();
 					%>
-					<tr>
-						<td><input type="radio" name="r_subject" value="<%=vo.getSubjectcode()%>"></td>
-						<td><%=vo.getSubjectcode()%></td>
-						<td><%=vo.getSubjectname()%></td>
+					<tr>						
+						<td><%=vo.getTestid()%></td>
+						<td><%=vo.getTestname()%></td>
+						<td><%=vo.getStd()%></td>
+						<td><%=vo.getMaxmarks()%></td>
+						<td><%=vo.getPassmarks()%></td>
 					</tr>
 					<%}}}%>
 					</table>

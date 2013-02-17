@@ -33,15 +33,15 @@ public class AddMarksController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String subject_code = request.getParameter("subject_details");
+		String std = request.getParameter("subject_details");
 		RetreiveDetailsBO bo = new RetreiveDetailsBO();
 		List<String> student_list,test_list;
 		String val = request.getParameter("val");
 		HttpSession session1 = request.getSession();
-		session1.setAttribute("subject_code", subject_code);
+		session1.setAttribute("standard", std);
 		if(val.equalsIgnoreCase("1")){
 			try {
-				String std = bo.retreiveStandard(subject_code);
+				//String std = bo.retreiveStandard(subject_code);
 				test_list = bo.retreiveTestDetails(std);
 				session1.setAttribute("testcombo", "testcombo");
 				session1.setAttribute("test_list", test_list);
@@ -60,7 +60,7 @@ public class AddMarksController extends HttpServlet {
 			try {
 				System.out.println(session1.getAttribute("subject_code"));
 				session1.setAttribute("stud", "stud");
-				String std = bo.retreiveStandard("DS01");
+				//String std = bo.retreiveStandard("DS01");
 				student_list = bo.retreiveStudentNames(std);
 				session1.setAttribute("student_list", student_list);
 				System.out.println(student_list);
