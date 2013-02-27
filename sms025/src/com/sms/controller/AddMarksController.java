@@ -101,6 +101,7 @@ public class AddMarksController extends HttpServlet {
 				student_list = bo.retreiveStudentNames(std);
 				session1.setAttribute("student_list", student_list);
 				System.out.println(student_list);
+				System.out.println(request.getAttribute(""));
 				RequestDispatcher dispatcher = request.getRequestDispatcher("addmarks.jsp");
 				dispatcher.forward(request, response);
 				
