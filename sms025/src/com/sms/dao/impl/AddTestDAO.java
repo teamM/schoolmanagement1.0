@@ -29,7 +29,7 @@ public class AddTestDAO {
 		}
 	}
 	public void AddTest(AddTestVO vo) throws SmsException, SmsBusinessException{
-		String query_create = "create table " + vo.getTestid() +"_table(test_id varchar(10),student_name varchar(30),marks_secured int(3),foreign key(test_id) references testdetails(test_id))";
+		String query_create = "create table " + vo.getTestid() +"_table(test_id varchar(10),subject_code varchar(10),student_name varchar(30),marks_secured int(3),foreign key(test_id) references testdetails(test_id))";
 		try{
 			statement=con.prepareStatement("insert into testdetails values(trim(?),trim(?),?,?,?)");
 			statement.setString(1,vo.getTestid());
@@ -45,6 +45,7 @@ public class AddTestDAO {
 			con.close();
 			}catch (SQLException e) {
 				// TODO Auto-generated catch block
+				e.getMessage();
 				throw new SmsBusinessException("Subject information could not be inserted");
 			}	
 		}

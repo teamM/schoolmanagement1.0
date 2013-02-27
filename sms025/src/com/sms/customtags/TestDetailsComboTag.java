@@ -12,7 +12,7 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
 public class TestDetailsComboTag extends SimpleTagSupport{
 
 	public void doTag() {
-
+		
 		PageContext pageContext = (PageContext)getJspContext();
 		HttpSession session = pageContext.getSession();		
 		if(session.getAttribute("testcombo")!=null){

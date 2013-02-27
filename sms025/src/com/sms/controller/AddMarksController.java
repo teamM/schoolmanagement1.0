@@ -33,15 +33,33 @@ public class AddMarksController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String std = request.getParameter("subject_details");
+		String subject_code = request.getParameter("subject_details");
+		
 		RetreiveDetailsBO bo = new RetreiveDetailsBO();
+		String std = null;
+		try {
+			std = bo.retreiveStandard(subject_code);
+		} catch (SmsException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (SmsBusinessException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		
 		List<String> student_list,test_list;
 		String val = request.getParameter("val");
 		HttpSession session1 = request.getSession();
 		session1.setAttribute("standard", std);
+		session1.setAttribute("subject_code",subject_code);
+		System.out.println(std+" std "+subject_code+" subcode ");
+		
+		
 		if(val.equalsIgnoreCase("1")){
 			try {
-				//String std = bo.retreiveStandard(subject_code);
+				
+				
 				test_list = bo.retreiveTestDetails(std);
 				session1.setAttribute("testcombo", "testcombo");
 				session1.setAttribute("test_list", test_list);
@@ -58,9 +76,28 @@ public class AddMarksController extends HttpServlet {
 		}
 		else if(val.equalsIgnoreCase("2")){
 			try {
-				System.out.println(session1.getAttribute("subject_code"));
+				System.out.println(session1.getAttribute("subject_code")+" subcode");
 				session1.setAttribute("stud", "stud");
 				//String std = bo.retreiveStandard("DS01");
+				student_list = bo.retreiveStudentNames(std);
+				System.out.println(request.getAttribute("test_list")+" test id <--");
+				session1.setAttribute("student_list", student_list);
+				System.out.println(student_list);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("addmarks.jsp");
+				dispatcher.forward(request, response);
+				
+			} catch (SmsException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SmsBusinessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		else if(val.equalsIgnoreCase("3")){
+			try {
+				System.out.println(session1.getAttribute("subject_code")+" subcode");
 				student_list = bo.retreiveStudentNames(std);
 				session1.setAttribute("student_list", student_list);
 				System.out.println(student_list);

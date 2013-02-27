@@ -51,9 +51,9 @@ public class RetreiveAssignedSubjects extends SimpleTagSupport{
 				vo = io.next();				
 				out.print("<tr>");
 				if(session.getAttribute("standard")!=null){
-					out.print("<td><input type='radio' id='subject_details' name='subject_details' value='"+vo.getStd()+"' onclick='fun(1)' checked/></td>");
+					out.print("<td><input type='radio' id='subject_details' name='subject_details' value='"+vo.getSubjectcode()+"' onclick='fun(1)' checked/></td>");
 				}else{
-					out.print("<td><input type='radio' id='subject_details' name='subject_details' value='"+vo.getStd()+"' onclick='fun(1)'/></td>");
+					out.print("<td><input type='radio' id='subject_details' name='subject_details' value='"+vo.getSubjectcode()+"' onclick='fun(1)'/></td>");
 				}
 				out.print("<td>" + vo.getStd() + "</td>");
 				out.print("<td>" + vo.getSubjectcode() + "</td>");
