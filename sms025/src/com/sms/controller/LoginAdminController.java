@@ -44,6 +44,7 @@ public class LoginAdminController extends HttpServlet {
 		String username=request.getParameter("username");
 		String password=request.getParameter("loginpassword");
 		HttpSession session = request.getSession();
+
 		session.setAttribute("login",username);
 		session.setAttribute("teacher_id", username);
 		
@@ -59,11 +60,9 @@ public class LoginAdminController extends HttpServlet {
 		if(vo.getUsertype().equalsIgnoreCase("teacher")){
 			try {
 				authentication=bo.authenticateUser(vo);
-				System.out.println(authentication+"is it true");
 				if(authentication==true){
 					session.setAttribute("login",vo.getUsertype());
 					session.setAttribute("username", vo.getUsername());
-					System.out.println("authentication status");
 					RequestDispatcher dispatcher1 = request.getRequestDispatcher("loginteacher.jsp");
 					dispatcher1.forward(request, response);
 				}

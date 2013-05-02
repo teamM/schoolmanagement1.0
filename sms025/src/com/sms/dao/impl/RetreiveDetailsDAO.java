@@ -56,7 +56,7 @@ public class RetreiveDetailsDAO {
 	public List<String> retreiveStudentNames(String std) throws SmsBusinessException{
 		List<String> student_list = new ArrayList<String>();
 		try {
-			statement = con.prepareStatement("select student_name from studentdetails where standard=?");
+			statement = con.prepareStatement("select sid from studentdetails where standard=?");
 			statement.setString(1, std);
 			result = statement.executeQuery();
 			while(result.next()){
@@ -92,6 +92,7 @@ public class RetreiveDetailsDAO {
 		try {
 			statement = con.prepareStatement("select distinct test_id from testdetails where standard=?");
 			statement.setString(1, std);
+			System.out.println(std+"std is ");
 			result = statement.executeQuery();
 			while(result.next()){
 				System.out.println(result.getString(1)+" so here ");

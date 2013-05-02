@@ -41,13 +41,16 @@ function sessfun(){
 				   Iterator<String> io_student = student_list.iterator();
 						%>
 						<table>
+						<tr><td>Student id</td><td>marks secured</td></tr>
 						<%while(io_student.hasNext()){
 							String student_name = io_student.next();
 									%>
+									
 							<tr><td><%=student_name %></td>
 							<td><input type="text" name="<%=student_name %>" id="<%=student_name %>"></td></tr>				
 						<% } %>
 						</table>
+						<input type="button" name="add_marks" value="Submit" onclick="fun(3)">
 				<% } } %>	
 			
 		</form>	
