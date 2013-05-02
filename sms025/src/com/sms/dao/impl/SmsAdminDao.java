@@ -141,6 +141,9 @@ public class SmsAdminDao implements Dao{
 	
 	public void deleteSubjectInfo(String sub_code) throws SmsBusinessException{
 		try{
+		statement1 = con.prepareStatement("delete from assignteacher where code=?");
+		statement1.setString(1, sub_code);
+		statement1.executeUpdate();
 		statement4=con.prepareStatement("delete from subject where subject_code=?");
 		statement4.setString(1, sub_code);
 		statement4.executeUpdate();

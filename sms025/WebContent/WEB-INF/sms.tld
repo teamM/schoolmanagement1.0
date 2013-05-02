@@ -91,4 +91,10 @@
  <body-content>empty</body-content>
  </tag>
  
+ <tag>
+ <name>RetreiveTeacherProfile</name>
+ <tag-class>com.sms.customtags.TeacherProfileCustomTag</tag-class>
+ <body-content>empty</body-content>
+ </tag>
+ 
 </taglib>

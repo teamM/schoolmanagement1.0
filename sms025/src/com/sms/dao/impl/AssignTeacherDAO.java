@@ -34,8 +34,11 @@ public class AssignTeacherDAO {
 	
 	public List<SubjectVO> getsubjectInfo(int std) throws SmsException, SmsBusinessException{
 		List<SubjectVO> subject_list = new ArrayList<SubjectVO>();
+		if(std==0){
+			throw new SmsBusinessException("Please choose the correct option");
+		}
 		try {
-			statement = con.prepareStatement("select * from subject where standard=?");		
+			statement = con.prepareStatement("select subject_code,subject_name from subject where standard=? and subject_code not in(select code from assignteacher);");		
 			statement.setInt(1, std);
 			result = statement.executeQuery();		
 			SubjectVO vo;
@@ -78,10 +81,10 @@ public class AssignTeacherDAO {
 		String[] subject_codes = tvo.getSubject_code();
 		try {
 				for(int i=0;i<subject_codes.length;i++){
-				statement = con.prepareStatement("insert into assignteacher values(?,?,?)");
+				statement = con.prepareStatement("insert into assignteacher values(?,?)");
 				statement.setString(1, subject_codes[i]);
 				statement.setString(2, tid);
-				statement.setString(3, "2");
+				//statement.setString(3, "2");
 				statement.executeUpdate();
 			}
 		} catch (SQLException e) {

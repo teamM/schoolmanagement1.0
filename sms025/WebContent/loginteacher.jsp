@@ -16,6 +16,7 @@ function f1(){
 	opener.location.reload(true);
 	//window.open("top.jsp","top");
 	window.open("teacher.jsp","left");
+	window.open("teacherprofile.jsp","right");
 	   self.close();
 }
 </script>
@@ -24,6 +25,7 @@ function f1(){
 //session.setAttribute("login", "admin");
 
 String login1 = (String) session.getAttribute("login");
+String teacher_id = (String) session.getAttribute("teacher_id");
 if(login1!=null){%>
 
 <%}else{

@@ -32,6 +32,7 @@ function fun(num) {
 				<div id="left">
 					Select Standard:
 					<select name="std" id="std" onchange="fun(1)">
+					<option value="0">Choose the standard</option>
 						<%
 							Integer std = (Integer) session.getAttribute("std");
 							if (std != null) {
@@ -55,7 +56,11 @@ function fun(num) {
 							}
 						%>
 					</select>
-					<%  List<SubjectVO> subject_list = (List<SubjectVO>)session.getAttribute("subject_list");
+					
+						
+					<%
+					if(request.getAttribute("error")==null){
+					List<SubjectVO> subject_list = (List<SubjectVO>)session.getAttribute("subject_list");
 						if(subject_list!=null){
 							Iterator io = subject_list.iterator();
 							SubjectVO vo ;
@@ -107,7 +112,7 @@ function fun(num) {
 					<%	}  %>
 					</table>
 					<input type="submit" value="Assign" onclick="fun(2)">
-					<%	}  %>
+					<%	}  }%>
 					
 				</div>
 			</form>

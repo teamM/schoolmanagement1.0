@@ -104,4 +104,25 @@ public class RetreiveDetailsDAO {
 		}		
 		return test_list;				
 	}
+	
+	public List retreiveTeacherProfile(String tid) throws SmsBusinessException {
+		
+		List teacher_profile = new ArrayList();
+		try {
+			statement = con.prepareStatement("select * from teacherdetails where tid=?");
+			statement.setString(1, tid);
+			result = statement.executeQuery();
+			while(result.next()){
+				teacher_profile.add(result.getString(1));
+				teacher_profile.add(result.getString(2));
+				teacher_profile.add(result.getInt(3));
+				teacher_profile.add(result.getString(4));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.getMessage();
+			throw new SmsBusinessException(e+" teacher Details could not be retreived");
+		}
+		return teacher_profile;
+	}
 }

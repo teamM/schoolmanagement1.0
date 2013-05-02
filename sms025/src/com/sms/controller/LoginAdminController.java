@@ -45,6 +45,7 @@ public class LoginAdminController extends HttpServlet {
 		String password=request.getParameter("loginpassword");
 		HttpSession session = request.getSession();
 		session.setAttribute("login",username);
+		session.setAttribute("teacher_id", username);
 		
 		AuthenticationVO vo=new AuthenticationVO();
 		AuthenticatinBO bo=new AuthenticatinBO();
